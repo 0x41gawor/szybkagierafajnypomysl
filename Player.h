@@ -7,7 +7,8 @@
 class Player
 {
 																							// D R A W I N G
-	sf::RectangleShape body;																//rectangle for drawing representing player
+	sf::RectangleShape body;																//rectangle for drawing, representing player
+	sf::RectangleShape frame;																//rectangle for drawing frame around player
 	float largeur;																			//height of body
 	float taille;																			//width of body
 	sf::Color color;																		//color of body
@@ -26,6 +27,8 @@ class Player
 	  Player();																				
 	  void draw(sf::RenderWindow& w);														
 	  void update(float dt, sf::RenderWindow& w);
+
+	  sf::Vector2f get__position();
 
   private:
 

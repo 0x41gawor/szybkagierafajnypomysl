@@ -4,14 +4,21 @@ Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER
 gun{ 4,sf::Color(P_GUN_COLOR),P_GUN_VELOCITY,P_GUN_DAMAGE,P_GUN_AS }
 {
 	body.setSize(sf::Vector2f(largeur, taille));
+	frame.setSize(sf::Vector2f(largeur, taille));
 	body.setOrigin(largeur / 2, taille / 2);
+	frame.setOrigin(largeur / 2, taille / 2);
 	body.setPosition(WIN_X / 2, WIN_Y / 2);
+	frame.setPosition(WIN_X / 2, WIN_Y / 2);
 	body.setFillColor(color);
+	frame.setFillColor(sf::Color::Transparent);
+	frame.setOutlineThickness(1);
+	frame.setOutlineColor(sf::Color(255, 255, 255));
 }
 
 void Player::draw(sf::RenderWindow& w)
 {
 	w.draw(body);
+	w.draw(frame);
 	gun.draw(w);
 }
 
@@ -30,6 +37,12 @@ void Player::update(float dt, sf::RenderWindow& w)
 	gun.update(dt, w);
 
 	body.move(movement * dt);
+	frame.move(movement * dt);
+}
+
+sf::Vector2f Player::get__position()
+{
+	return body.getPosition();
 }
 
 void Player::update__movement_control(sf::RenderWindow& w)
@@ -63,6 +76,7 @@ void Player::update__movement_control(sf::RenderWindow& w)
 			}
 		}
 		body.setRotation(angle * 57.29f);
+		frame.setRotation(angle * 57.29f);
 	}
 
 	if (abs(body.getPosition().x - targetPoint.x) < 2 && abs(body.getPosition().y - targetPoint.y) < 2)
