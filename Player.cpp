@@ -1,6 +1,7 @@
 #include "Player.h"
 
-Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER_MS }, color{ PLAYER_COLOR }
+Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER_MS }, color{ PLAYER_COLOR },
+gun{ 4,sf::Color(P_GUN_COLOR),P_GUN_VELOCITY,P_GUN_DAMAGE,P_GUN_AS }
 {
 	body.setSize(sf::Vector2f(largeur, taille));
 	body.setOrigin(largeur / 2, taille / 2);
@@ -11,15 +12,22 @@ Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER
 void Player::draw(sf::RenderWindow& w)
 {
 	w.draw(body);
+	gun.draw(w);
 }
 
 void Player::update(float dt, sf::RenderWindow& w)
 {
 	position = body.getPosition();
 
-	//<  M O V E M E N T   C O N T R O L  >
+	//<    C O N T R O L  >
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+	{
+		gun.fire(sf::Mouse::getPosition(w), body.getPosition(), dt);
+	}
 	update__movement_control(w);
-	//< / M O V E M E N T   C O N T R O L >
+	//< /  C O N T R O L >
+
+	gun.update(dt, w);
 
 	body.move(movement * dt);
 }

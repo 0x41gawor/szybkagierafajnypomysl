@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "constants.h"
 
+#include "Gun.h"
+
 class Player
 {
 																							// D R A W I N G
@@ -17,7 +19,7 @@ class Player
 
 																							// G A M E
 	float ms;																				//movement speed of body
-
+	Gun gun;
 
   public:
 																							// I N T E R F A C E
@@ -25,7 +27,7 @@ class Player
 	  void draw(sf::RenderWindow& w);														
 	  void update(float dt, sf::RenderWindow& w);
 
-   private:
+  private:
 
 	 void update__movement_control(sf::RenderWindow& w);
 
