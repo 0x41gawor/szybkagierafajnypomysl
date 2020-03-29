@@ -1,6 +1,6 @@
 #include "Bullet.h"
 
-Bullet::Bullet(sf::Vector2i aimPos, sf::Vector2f shooterPos, float Velocity, float radius, sf::Color color)
+Bullet::Bullet(sf::Vector2i aimPos, sf::Vector2f shooterPos, float Velocity, float radius, sf::Color color):dead{false}
 {
 	body.setFillColor(color);
 	body.setPosition(shooterPos);
@@ -39,4 +39,19 @@ void Bullet::draw(sf::RenderWindow& w)
 bool Bullet::out_of_map()
 {
 	return(body.getPosition().x < 0 || body.getPosition().y < 0 || body.getPosition().x>WIN_X || body.getPosition().y > WIN_Y);
+}
+
+sf::Vector2f Bullet::get__position()
+{
+	return body.getPosition();
+}
+
+bool Bullet::get__dead()
+{
+	return dead;
+}
+
+void Bullet::set__dead(bool dead)
+{
+	this->dead = dead;
 }

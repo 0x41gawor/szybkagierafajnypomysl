@@ -31,6 +31,10 @@ class Gun
 	Gun(float radius, sf::Color color, float Velocity, float damage, float attackSpeed);
 	void update(float dt, sf::RenderWindow& w);
 	void draw(sf::RenderWindow& w);
+
 	void fire(sf::Vector2i aimPos, sf::Vector2f shooterPos, float dt);
+
+	std::vector<Bullet>* share_bullets();
+	float get__damage();
 };
 

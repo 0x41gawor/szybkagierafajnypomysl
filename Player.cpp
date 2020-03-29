@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER_MS }, color{ PLAYER_COLOR },
+Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER_MS }, color{ PLAYER_COLOR },maxlaVie{1000.f},laVie{1000.f},
 gun{ 4,sf::Color(P_GUN_COLOR),P_GUN_VELOCITY,P_GUN_DAMAGE,P_GUN_AS }
 {
 	body.setSize(sf::Vector2f(largeur, taille));
@@ -38,11 +38,41 @@ void Player::update(float dt, sf::RenderWindow& w)
 
 	body.move(movement * dt);
 	frame.move(movement * dt);
+
+	float percent = laVie / maxlaVie;
+	body.setSize(sf::Vector2f(percent * largeur, taille));
+
+	if (laVie < 0.f)
+	{
+		laVie = maxlaVie;
+	}
+}
+
+void Player::take_damage(float dmg)
+{
+	laVie -= dmg;
+	if (laVie > maxlaVie)
+		laVie = maxlaVie;
 }
 
 sf::Vector2f Player::get__position()
 {
 	return body.getPosition();
+}
+
+float Player::get__gun_damage()
+{
+	return gun.get__damage();
+}
+
+std::vector<Bullet>* Player::gun_share_bullets()
+{
+	return gun.share_bullets();
+}
+
+sf::FloatRect Player::get__Global_Bounds()
+{
+	return body.getGlobalBounds();
 }
 
 void Player::update__movement_control(sf::RenderWindow& w)

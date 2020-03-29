@@ -11,7 +11,7 @@ void Gun::update(float dt, sf::RenderWindow& w)
 	for (int i = 0; i < (int)bullets.size(); i++)
 	{
 		bullets[i].update(dt);
-		if (bullets[i].out_of_map())
+		if (bullets[i].out_of_map() || bullets[i].get__dead())
 			bullets.erase(bullets.begin() + i);
 	}
 	timeSinceLastShot += dt;
@@ -32,4 +32,14 @@ void Gun::fire(sf::Vector2i aimPos, sf::Vector2f shooterPos, float dt)
 		bullets.emplace_back(aimPos, shooterPos, Velocity, radius, color);
 		timeSinceLastShot = 0.f;
 	}
+}
+
+std::vector<Bullet>* Gun::share_bullets()
+{
+	return &bullets;
+}
+
+float Gun::get__damage()
+{
+	return damage;
 }

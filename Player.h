@@ -20,6 +20,8 @@ class Player
 
 																							// G A M E
 	float ms;																				//movement speed of body
+	float maxlaVie;
+	float laVie;
 	Gun gun;
 
   public:
@@ -28,13 +30,16 @@ class Player
 	  void draw(sf::RenderWindow& w);														
 	  void update(float dt, sf::RenderWindow& w);
 
+	  void take_damage(float dmg);
+
 	  sf::Vector2f get__position();
+	  float get__gun_damage();
+	  std::vector<Bullet>* gun_share_bullets();
+	  sf::FloatRect get__Global_Bounds();
 
   private:
 
 	 void update__movement_control(sf::RenderWindow& w);
-
-
 
 };
 
