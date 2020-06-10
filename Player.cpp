@@ -44,7 +44,7 @@ void Player::update(float dt, sf::RenderWindow& w)
 
 	if (laVie < 0.f)
 	{
-		laVie = maxlaVie;
+		w.close();
 	}
 }
 

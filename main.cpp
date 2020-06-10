@@ -11,7 +11,8 @@ int main()
 {
 	srand(time(NULL));
 
-	sf::RenderWindow window(sf::VideoMode(WIN_X, WIN_Y), "test&recognize");
+	sf::RenderWindow window;
+	window.create(sf::VideoMode::getDesktopMode(), "test&recognize", sf::Style::None);
 
 	Player player;
 	EnemyManager enemies;
@@ -21,11 +22,20 @@ int main()
 
 	while (window.isOpen())
 	{
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+					window.close();
+					break;
+			case sf::Event::EventType::KeyPressed:
+				if (sf::Keyboard::Key::Escape == event.key.code)
+					window.close();
+				break;
+			}
 		}
 
 		dt = clock.restart().asSeconds();
@@ -42,6 +52,10 @@ int main()
 		window.display();
 		//< / D R A W   S E C T I O N >
 	}
+	
+	std::cout<<"Score: "<<enemies.get__score();
+	getchar();
 
 	return 0;
+
 }
