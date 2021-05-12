@@ -1,4 +1,4 @@
-#include "Bullet.h"
+#include "../include/Bullet.h"
 
 Bullet::Bullet(sf::Vector2i aimPos, sf::Vector2f shooterPos, float Velocity, float radius, sf::Color color):dead{false}
 {

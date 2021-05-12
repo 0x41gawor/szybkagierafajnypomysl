@@ -1,4 +1,4 @@
-#include "Enemy.h"
+#include "../include/Enemy.h"
 
 Enemy::Enemy(sf::Vector2f position, float largeur, float taille, float ms, float maxlaVie, sf::Color color)
 	:dead{false},position{position},largeur{largeur},taille{taille},maxlaVie{maxlaVie},laVie{maxlaVie},color{color},ms{ms}

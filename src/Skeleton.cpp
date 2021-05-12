@@ -1,4 +1,4 @@
-#include "Skeleton.h"
+#include "../include/Skeleton.h"
 
 Skeleton::Skeleton(sf::Vector2f position, float largeur, float taille, float ms, float maxlaVie, sf::Color color,
 	float gunRadius, sf::Color gunColor, float gunVelocity, float gunDamage,float gunAttackSpeed)

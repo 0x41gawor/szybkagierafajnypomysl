@@ -1,4 +1,4 @@
-#include "Zombie.h"
+#include "../include/Zombie.h"
 
 Zombie::Zombie(sf::Vector2f position, float largeur, float taille, float ms, float maxlaVie, sf::Color color)
 	:Enemy{position,largeur,taille,ms,maxlaVie,color}

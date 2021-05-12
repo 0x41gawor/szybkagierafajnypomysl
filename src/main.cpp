@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
-#include "constants.h"
-#include "Player.h"
-#include "Zombie.h"
-#include "Skeleton.h"
-#include "EnemyManager.h"
+#include "../include/constants.h"
+#include "../include/Player.h"
+#include "../include/Zombie.h"
+#include "../include/Skeleton.h"
+#include "../include/EnemyManager.h"
 
 #include<iostream>
 

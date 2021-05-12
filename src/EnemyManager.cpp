@@ -1,4 +1,4 @@
-#include "EnemyManager.h"
+#include "../include/EnemyManager.h"
 
 EnemyManager::EnemyManager(float freqTimeZom, float freqTimeSke) :freqTimeZom{ freqTimeZom }, freqTimeSke{ freqTimeSke }, timeSinceLastSpawnZom{ 0.f }, timeSinceLastSpawnSke{ 0.f },score{0}
 {

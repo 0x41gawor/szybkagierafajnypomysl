@@ -1,4 +1,4 @@
-#include "Gun.h"
+#include "../include/Gun.h"
 
 Gun::Gun(float radius, sf::Color color, float Velocity, float damage, float attackSpeed)
 	:radius{ radius }, color{ color }, Velocity{ Velocity }, damage{ damage }, attackSpeed{ attackSpeed }, timeSinceLastShot{ 0.f }
