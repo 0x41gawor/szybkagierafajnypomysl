@@ -4,6 +4,7 @@
 #include "../include/Zombie.h"
 #include "../include/Skeleton.h"
 #include "../include/EnemyManager.h"
+#include "../HUD/include/Score.h"
 
 #include<iostream>
 
@@ -16,6 +17,9 @@ int main()
 
 	Player player;
 	EnemyManager enemies;
+
+	HUD::Score score;
+
 
 	sf::Clock clock;
 	float dt{ 0.f };
@@ -43,17 +47,19 @@ int main()
 		//<  U P D A T E   S E C T I O N  >
 		player.update(dt, window);
 		enemies.update(dt, window, player);
+		score.update(enemies.get__deadEnemies());
 		//< / U P D A T E   S E C T I O N >
 
 		//<  D R A W   S E C T I O N  >
 		window.clear();
 		player.draw(window);
 		enemies.draw(window);
+		score.draw(window);
 		window.display();
 		//< / D R A W   S E C T I O N >
 	}
 	
-	std::cout<<"Score: "<<enemies.get__score();
+	std::cout<<"Score: "<<enemies.get__deadEnemies();
 	getchar();
 
 	return 0;

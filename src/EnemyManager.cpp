@@ -1,6 +1,6 @@
 #include "../include/EnemyManager.h"
 
-EnemyManager::EnemyManager(float freqTimeZom, float freqTimeSke) :freqTimeZom{ freqTimeZom }, freqTimeSke{ freqTimeSke }, timeSinceLastSpawnZom{ 0.f }, timeSinceLastSpawnSke{ 0.f },score{0}
+EnemyManager::EnemyManager(float freqTimeZom, float freqTimeSke) :freqTimeZom{ freqTimeZom }, freqTimeSke{ freqTimeSke }, timeSinceLastSpawnZom{ 0.f }, timeSinceLastSpawnSke{ 0.f },deadEnemies{0}
 {
 	;;
 }
@@ -55,7 +55,7 @@ void EnemyManager::update(float dt, sf::RenderWindow& w, Player& player)
 		zombies[i].update(dt, w, player.get__position());
 		if (zombies[i].get__dead())
 		{
-			zombies.erase(zombies.begin() + i); score++;
+			zombies.erase(zombies.begin() + i); deadEnemies++;
 		}
 	}
 	//update and erasing dead skeletons xdxd
@@ -64,7 +64,7 @@ void EnemyManager::update(float dt, sf::RenderWindow& w, Player& player)
 		skeletons[i].update(dt, w, player.get__position());
 		if (skeletons[i].get__dead())
 		{
-			skeletons.erase(skeletons.begin() + i); score++;
+			skeletons.erase(skeletons.begin() + i); deadEnemies++;
 		}
 	}
 	//zombies collision
@@ -109,9 +109,9 @@ void EnemyManager::update(float dt, sf::RenderWindow& w, Player& player)
 	}
 }
 
-int EnemyManager::get__score()
+int EnemyManager::get__deadEnemies()
 {
-	return this->score;
+	return this->deadEnemies;
 }
 
 sf::Vector2f EnemyManager::update__generate_position()

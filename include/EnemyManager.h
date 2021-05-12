@@ -16,14 +16,14 @@ class EnemyManager
 	float timeSinceLastSpawnZom;															//auxiliary variable
 	float timeSinceLastSpawnSke;															//auxiliary variable
 
-	int score;																				//temporarily here, counter of enemies killed
+	int deadEnemies;																		//counter of enemies killed
 
 public:
 	EnemyManager(float freqTimeZom = ZOMBIE_FREQ, float freqTimeSke = SKELETON_FREQ);
 	void draw(sf::RenderWindow& w);
 	void update(float dt, sf::RenderWindow& w, Player& player);
 
-	int get__score();
+	int get__deadEnemies();
 private:
 	sf::Vector2f update__generate_position();
 
