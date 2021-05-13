@@ -25,5 +25,6 @@ class Game
   public:
 	  Game();
 	  int play();
+	  void show_score(int score);
 };
 
