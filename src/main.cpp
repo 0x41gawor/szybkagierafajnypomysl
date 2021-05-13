@@ -9,7 +9,11 @@ int main()
 	srand(time(NULL));
 
 	Game game;
-	game.play();
-	return 0;
+	for (;;)
+	{
+		int score = game.play();
+		game.show_score(score);
+	}
 
+	return 0;
 }
