@@ -23,6 +23,7 @@ class Player
 	float maxlaVie;
 	float laVie;
 	Gun gun;
+	bool isDead;																			//tells if player is dead or not
 
   public:
 																							// I N T E R F A C E
@@ -34,6 +35,7 @@ class Player
 
 	  sf::Vector2f get__position();
 	  float get__gun_damage();
+	  bool get__isDead();
 	  std::vector<Bullet>* gun_share_bullets();
 	  sf::FloatRect get__Global_Bounds();
 

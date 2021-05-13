@@ -1,7 +1,7 @@
 #include "../include/Player.h"
 
-Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER_MS }, color{ PLAYER_COLOR },maxlaVie{1000.f},laVie{1000.f},
-gun{ 4,sf::Color(P_GUN_COLOR),P_GUN_VELOCITY,P_GUN_DAMAGE,P_GUN_AS }
+Player::Player() :largeur{ PLAYER_LARGEUR }, taille{ PLAYER_TAILLE }, ms{ PLAYER_MS }, color{ PLAYER_COLOR }, maxlaVie{1000.f}, laVie{1000.f},
+gun{ 4,sf::Color(P_GUN_COLOR),P_GUN_VELOCITY,P_GUN_DAMAGE,P_GUN_AS }, isDead{false}
 {
 	body.setSize(sf::Vector2f(largeur, taille));
 	frame.setSize(sf::Vector2f(largeur, taille));
@@ -44,7 +44,7 @@ void Player::update(float dt, sf::RenderWindow& w)
 
 	if (laVie < 0.f)
 	{
-		w.close();
+		isDead = true;
 	}
 }
 
@@ -63,6 +63,11 @@ sf::Vector2f Player::get__position()
 float Player::get__gun_damage()
 {
 	return gun.get__damage();
+}
+
+bool Player::get__isDead()
+{
+	return isDead;
 }
 
 std::vector<Bullet>* Player::gun_share_bullets()
